@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AirTrik Javascript Example</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript" src="https://cdn.airtrik.com/js/0.1.0/index.js"></script>
+</head>
+<body>
+<h1 align="center">AirTrik Javascript Example</h1>
+<h3 align="center">Check Javascript Console</h3>
+<script type="text/javascript">
+
+	AIRTRIK_connect("__APP_KEY__")
+	onConnect = ()=>{
+		console.log("Hello")
+		subscribe('bulb')
+		subscribe('ac')
+		send('bulb', 'Wo HOOO')
+	}
+
+	onReceive = (msg, deviceId)=>{
+		console.log(msg)
+		console.log(deviceId)
+	}
+
+</script>
+</body>
+</html>
