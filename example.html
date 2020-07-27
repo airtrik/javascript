@@ -3,8 +3,7 @@
 <head>
 	<title>AirTrik Javascript Example</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
-
-	<script type="text/javascript" src="https://cdn.airtrik.com/js/0.1.0/index.js"></script>
+	<script type="text/javascript" src="https://cdn.airtrik.com/js/0.1.1/index.js"></script>
 </head>
 <body>
 <h1 align="center">AirTrik Javascript Example</h1>
@@ -13,11 +12,11 @@
 
 	AIRTRIK_connect("__APP_KEY__")
 	onConnect = ()=>{
-		console.log("Hello")
-		subscribe('bulb')
-		subscribe('ac')
-		send('bulb', 'Wo HOOO')
+		subscribe('__DEVICE_ID__')
+		send('__DEVICE_ID__', '__MESSAGE__')
 	}
+
+	lastmsg().then(data=>console.log(data))
 
 	onReceive = (msg, deviceId)=>{
 		console.log(msg)

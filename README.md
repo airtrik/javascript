@@ -33,7 +33,7 @@ Airtrik javascript library can easily be loaded to any webpage/web app through c
 
 ```
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="https://cdn.airtrik.com/js/0.1.0/index.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://cdn.airtrik.com/js/0.1.1/index.js" type="text/javascript"></script>
 ```
 
 ### Connecting to your App's Network

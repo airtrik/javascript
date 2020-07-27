@@ -1,5 +1,6 @@
 var AIRTRIK_KEY = ""
 var AIRTRIK_apiEndPoint = "https://airtrik.com/iot/";
+var AIRTRIK_lastMsgEndPoint = "https://airtrik.com/api/lastmsg/";
 var AIRTRIK_mqttEndPoint = "airtrik.com";
 var AIRTRIK_clientId = Math.random().toString(36).substring(2);
 var AIRTRIK_portNumber = 8083
@@ -51,9 +52,28 @@ function AIRTRIK_connect(key){
 			AIRTRIK_client.onConnectionLost = onConnectionLost;
 			AIRTRIK_client.onMessageArrived = onMessageArrived;
 		})
-
-
 }
+
+function lastmsg(key=0){
+  if(key == 0){
+    key = AIRTRIK_KEY
+  }
+  let myPromise = new Promise((resolve, reject)=>{
+
+  	let tosend = new FormData();
+	tosend.append('key', key)
+	fetch(AIRTRIK_lastMsgEndPoint, {
+			method: 'POST',
+			body: tosend
+		})
+		.then(res => res.json())
+		.then((data)=>{
+			resolve(data)
+		});
+  })
+  return myPromise;
+}
+
 
 function send(deviceId, msg){
 	message = new Paho.MQTT.Message(msg);
